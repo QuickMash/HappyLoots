@@ -1,0 +1,415 @@
+# HappyLoot Configuration File
+# Configure loot boxes, their contents, and blacklist rules.
+# ------------------------------------------------------------------
+# General Settings
+general:
+  # Facing Options: 1 - North, 2 - East, 3 - South, 4 - West, 5 - Random
+  lootbox_rotation: 5
+  respawn_radius: 100 # Radius to respawn lootboxes if failed from blacklist
+  max_respawn_attempts: 30 # Max attempts(to find new location for lootbox) to quit at. Default is 30, Infinite is -1, I would avoid -1
+  caves_okay: true # Boolean - If lootboxes can spawn in caves
+  above_ground_okay: true # Boolean - If lootboxes can spawn above grounds
+  underground_okay: false # Boolean - If lootboxes can spawn under grounds(like inside stone/ground, not cave)
+  # TODO: Add more options
+
+# Worlds that chests will be spawned in
+worlds:
+  - world
+  - world_nether
+  - world_the_end
+
+
+# ------------------------------------------------------------------
+# Blacklisted Blocks
+# These Blocks will have special actions done to them
+# Action Options - *REQUIRED - 1 - Destroy Lootbox, 2 - Place Block Under Lootbox, 3 - Put lootbox somewhere else(REGEN), 4 - Move lootbox in specific direction - Lootbox Actions
+# Options - *REQUIRED if Action is 4 , 1 - North, 2 - East, 3 - South, 4 - West, 5 - Random(1-4), 6 - Up, 7 - Down, 8 - Random(6-7), 9 - Random(1-4,6,7) - Direction to move block in
+# waterlog - *OPTIONAL, Boolean - If block should be waterlogged when placed
+# range - *REQUIRED if Action is 3, Integer - How far away to place lootbox
+
+blacklist:
+  - block: "minecraft:water"
+    action: 3
+    direction: 2
+    waterlog: true
+  - block: "minecraft:lava"
+    action: 2
+    replace_with: "minecraft:stone"
+
+# ------------------------------------------------------------------
+# Lootboxes
+# Each lootbox has a name, rarity, and a list of items with their chances
+# name - *REQUIRED, String - Name of the lootbox
+# rarity - *REQUIRED, Integer - Rarity of the lootbox (1-4)
+# items:
+#   - id - *REQUIRED, String - Item ID
+#   - chance - *REQUIRED, Float - Chance of the item dropping (0.0-1.0)
+#   - enchant - *OPTIONAL, List of Enchantments
+#     - id - *REQUIRED, String - Enchantment ID
+#     - level - *REQUIRED, Integer - Enchantment level
+#     - chance - *REQUIRED, Float - Chance of the enchantment applying (0.0-1.0)
+# default_amount_per_chunk - *OPTIONAL, Float - Default amount of lootboxes per chunk (0.0-1.0)
+lootboxes:
+  - name: "Common"
+    rarity: 1
+    min_empty_slots: 10
+    items:
+      - id: "minecraft:apple"
+        chance: 0.9
+      - id: "minecraft:bread"
+        chance: 0.8
+      - id: "minecraft:stone"
+        chance: 0.8
+      - id: "minecraft:iron_ore"
+        chance: 0.2
+      - id: "minecraft:stone_pickaxe"
+        chance: 0.5
+      - id: "minecraft:stone_axe"
+        chance: 0.2
+      - id: "minecraft:wooden_sword"
+        chance: 0.5
+      - id: "minecraft:iron_nugget"
+        chance: 0.3
+      - id: "minecraft:gold_nugget"
+        chance: 0.2
+      - id: "minecraft:coal"
+        chance: 0.4
+      - id: "minecraft:stick"
+        chance: 0.7
+      - id: "minecraft:dirt"
+        chance: 0.6
+      - id: "minecraft:rotten_flesh"
+        chance: 0.5
+      - id: "minecraft:poisonous_potato"
+        chance: 0.3
+      - id: "minecraft:leather_helmet"
+        chance: 0.15
+      - id: "minecraft:leather_chestplate"
+        chance: 0.1
+      - id: "minecraft:leather_leggings"
+        chance: 0.1
+      - id: "minecraft:leather_boots"
+        chance: 0.15
+      - id: "minecraft:carrot"
+        chance: 0.4
+      - id: "minecraft:potato"
+        chance: 0.4
+      - id: "minecraft:wheat_seeds"
+        chance: 0.5
+      - id: "minecraft:pumpkin_seeds"
+        chance: 0.3
+      - id: "minecraft:melon_seeds"
+        chance: 0.3
+      - id: "minecraft:feather"
+        chance: 0.3
+      - id: "minecraft:paper"
+        chance: 0.2
+      - id: "minecraft:bone"
+        chance: 0.2
+      - id: "minecraft:flint"
+        chance: 0.2
+      - id: "minecraft:iron_ingot"
+        chance: 0.05
+      - id: "minecraft:golden_apple"
+        chance: 0.01
+      - id: "minecraft:wooden_sword"
+        chance: 0.5
+        enchant:
+          - id: "minecraft:sharpness"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:stone_pickaxe"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:efficiency"
+            level: 1
+            chance: 0.15
+      - id: "minecraft:leather_boots"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:feather_falling"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:leather_helmet"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:protection"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:bow"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:power"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:fishing_rod"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:lure"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:wooden_shovel"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:unbreaking"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:leather_chestplate"
+        chance: 0.05
+        enchant:
+          - id: "minecraft:thorns"
+            level: 1
+            chance: 0.05
+      - id: "minecraft:stone_hoe"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:efficiency"
+            level: 1
+            chance: 0.05
+      - id: "minecraft:leather_boots"
+        chance: 0.05
+        enchant:
+          - id: "minecraft:curse_of_binding"
+            level: 1
+            chance: 0.05
+      - id: "minecraft:wooden_sword"
+        chance: 0.05
+        enchant:
+          - id: "minecraft:curse_of_vanishing"
+            level: 1
+            chance: 0.05
+      - id: "minecraft:gravel"
+        chance: 0.3
+      - id: "minecraft:sand"
+        chance: 0.3
+      - id: "minecraft:egg"
+        chance: 0.2
+      - id: "minecraft:sugar"
+        chance: 0.2
+      - id: "minecraft:dead_bush"
+        chance: 0.1
+      - id: "minecraft:wooden_hoe"
+        chance: 0.2
+    default_amount_per_chunk: 0.1
+
+  - name: "Rare"
+    rarity: 2
+    items:
+      - id: "minecraft:iron_ingot"
+        chance: 0.9
+      - id: "minecraft:gold_ingot"
+        chance: 0.8
+      - id: "minecraft:iron_pickaxe"
+        chance: 0.4
+      - id: "minecraft:golden_apple"
+        chance: 0.05
+      - id: "minecraft:emerald"
+        chance: 0.1
+      - id: "minecraft:bow"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:power"
+            level: 2
+            chance: 0.2
+      - id: "minecraft:iron_sword"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:sharpness"
+            level: 2
+            chance: 0.15
+      - id: "minecraft:iron_helmet"
+        chance: 0.1
+      - id: "minecraft:iron_chestplate"
+        chance: 0.08
+      - id: "minecraft:iron_leggings"
+        chance: 0.08
+      - id: "minecraft:iron_boots"
+        chance: 0.1
+      - id: "minecraft:shield"
+        chance: 0.1
+      - id: "minecraft:crossbow"
+        chance: 0.05
+        enchant:
+          - id: "minecraft:quick_charge"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:enchanted_book"
+        chance: 0.05
+      - id: "minecraft:lapis_lazuli"
+        chance: 0.2
+      - id: "minecraft:experience_bottle"
+        chance: 0.05
+      - id: "minecraft:iron_pickaxe"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:efficiency"
+            level: 2
+            chance: 0.1
+      - id: "minecraft:iron_shovel"
+        chance: 0.1
+      - id: "minecraft:iron_axe"
+        chance: 0.1
+      - id: "minecraft:iron_hoe"
+        chance: 0.1
+      - id: "minecraft:clock"
+        chance: 0.02
+      - id: "minecraft:compass"
+        chance: 0.02
+      - id: "minecraft:map"
+        chance: 0.02
+      - id: "minecraft:bucket"
+        chance: 0.05
+      - id: "minecraft:slime_ball"
+        chance: 0.03
+      - id: "minecraft:spider_eye"
+        chance: 0.05
+      - id: "minecraft:glow_ink_sac"
+        chance: 0.03
+    default_amount_per_chunk: 0.01
+
+  - name: "Epic"
+    rarity: 3
+    items:
+      - id: "minecraft:elytra"
+        chance: 0.2
+      - id: "minecraft:nether_star"
+        chance: 0.1
+      - id: "minecraft:diamond"
+        chance: 0.3
+      - id: "minecraft:diamond_sword"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:sharpness"
+            level: 3
+            chance: 0.2
+          - id: "minecraft:unbreaking"
+            level: 2
+            chance: 0.1
+      - id: "minecraft:diamond_pickaxe"
+        chance: 0.1
+        enchant:
+          - id: "minecraft:efficiency"
+            level: 3
+            chance: 0.2
+      - id: "minecraft:diamond_helmet"
+        chance: 0.05
+      - id: "minecraft:diamond_chestplate"
+        chance: 0.04
+      - id: "minecraft:diamond_leggings"
+        chance: 0.04
+      - id: "minecraft:diamond_boots"
+        chance: 0.05
+      - id: "minecraft:enchanted_golden_apple"
+        chance: 0.01
+      - id: "minecraft:totem_of_undying"
+        chance: 0.01
+      - id: "minecraft:trident"
+        chance: 0.01
+        enchant:
+          - id: "minecraft:loyalty"
+            level: 2
+            chance: 0.1
+      - id: "minecraft:shulker_shell"
+        chance: 0.02
+      - id: "minecraft:beacon"
+        chance: 0.01
+      - id: "minecraft:netherite_scrap"
+        chance: 0.01
+      - id: "minecraft:netherite_ingot"
+        chance: 0.005
+      - id: "minecraft:diamond_axe"
+        chance: 0.05
+      - id: "minecraft:diamond_shovel"
+        chance: 0.05
+      - id: "minecraft:diamond_hoe"
+        chance: 0.05
+      - id: "minecraft:enchanted_book"
+        chance: 0.1
+      - id: "minecraft:experience_bottle"
+        chance: 0.1
+      - id: "minecraft:phantom_membrane"
+        chance: 0.02
+      - id: "minecraft:heart_of_the_sea"
+        chance: 0.01
+    default_amount_per_chunk: 0.001
+
+  - name: "Legendary"
+    rarity: 4
+    items:
+      - id: "minecraft:dragon_egg"
+        chance: 0.01
+      - id: "minecraft:beacon"
+        chance: 0.05
+      - id: "minecraft:nether_star"
+        chance: 0.1
+      - id: "minecraft:elytra"
+        chance: 0.2
+        enchant:
+          - id: "minecraft:unbreaking"
+            level: 3
+            chance: 0.2
+          - id: "minecraft:mending"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:netherite_ingot"
+        chance: 0.05
+      - id: "minecraft:netherite_sword"
+        chance: 0.02
+        enchant:
+          - id: "minecraft:sharpness"
+            level: 5
+            chance: 0.2
+          - id: "minecraft:unbreaking"
+            level: 3
+            chance: 0.1
+      - id: "minecraft:netherite_pickaxe"
+        chance: 0.02
+        enchant:
+          - id: "minecraft:efficiency"
+            level: 5
+            chance: 0.2
+          - id: "minecraft:fortune"
+            level: 3
+            chance: 0.1
+      - id: "minecraft:netherite_helmet"
+        chance: 0.01
+      - id: "minecraft:netherite_chestplate"
+        chance: 0.01
+      - id: "minecraft:netherite_leggings"
+        chance: 0.01
+      - id: "minecraft:netherite_boots"
+        chance: 0.01
+      - id: "minecraft:enchanted_golden_apple"
+        chance: 0.02
+      - id: "minecraft:totem_of_undying"
+        chance: 0.05
+      - id: "minecraft:conduit"
+        chance: 0.01
+      - id: "minecraft:dragon_head"
+        chance: 0.01
+      - id: "minecraft:shulker_box"
+        chance: 0.01
+      - id: "minecraft:trident"
+        chance: 0.01
+        enchant:
+          - id: "minecraft:loyalty"
+            level: 3
+            chance: 0.2
+          - id: "minecraft:channeling"
+            level: 1
+            chance: 0.1
+      - id: "minecraft:enchanted_book"
+        chance: 0.2
+      - id: "minecraft:experience_bottle"
+        chance: 0.2
+      - id: "minecraft:heart_of_the_sea"
+        chance: 0.02
+    default_amount_per_chunk: 0.0001
+
+  # Example for adding more lootboxes:
+  # - name: "Godly"
+  #   rarity: 5
+  #   items:
+  #     - id: "minecraft:totem_of_undying"
+  #       chance: 1.0
+  #   default_amount_per_chunk: 0.0001

@@ -1,0 +1,9 @@
+name: HappyLoots
+version: '0.0.1-alpha'
+main: org.quickmash.happyLoots.HappyLoots
+api-version: '1.21'
+prefix: HLoots
+load: STARTUP
+authors: [ QuickMash ]
+description: Randomly Generated Loot around the World
+website: quickmash.cc
